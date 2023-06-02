@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/base.css}"/>
+    <link rel="stylesheet" th:href="@{/css/login.css}"/>
+</head>
+<body>
+    <div class="box-layout justify-content-center">
+        <div class="card box-layout__box text-center">
+            <div class="card-header border-bottom-0 pb-0 bg-white">
+                <h1 class="box-layout__title">Gider Yöneticisi</h1>
+                <p class="box-layout__title">Harcamalarınızı takip edin</p>
+            </div>
+            <div class="card-body pt-0">
+                <form id="loginForm" th:action="@{/login}" method="post">
+                    <div th:if="${param.error}">
+                        <div class="alert help-block">
+                            Geçersiz email veya şifre
+                        </div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert help-block">
+                            Başarıyla çıkış yaptınız
+                        </div>
+                    </div>
+                    <input type="text" 
+                           name="email" 
+                           placeholder="Email adresini giriniz" 
+                           class="form-control mb-3" 
+                           autofocus="autofocus"/>
+
+                    <input type="password" 
+                           name="password" 
+                           placeholder="Şifrenizi giriniz"
+                           class="form-control mb-3"/>
+
+                    <button type="submit" class="btn form-control button_default text">Giriş</button>
+                </form>
+            </div>
+            <div class="card-footer bg-white border-top-0">
+                <span class="float-right">
+                    Henüz kayıt olmadıysanız - <a th:href="@{/register}" class="base-color font-weight-bold">Kayıt Ol</a>
+                </span>
+            </div>
+        </div>
+    </div>
+     <script th:src="@{/js/jquery.js}"></script>
+     <script th:src="@{/js/jquery-validator.js}"></script>
+     <script th:src="@{/js/bootstrap.js}"></script>
+     <script th:src="@{/js/login.js}"></script>
+</body>
+</html>

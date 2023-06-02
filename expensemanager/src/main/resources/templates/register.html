@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link rel="stylesheet" th:href="@{/css/base.css}"/>
+    <link rel="stylesheet" th:href="@{/css/login.css}"/>
+</head>
+<body>
+    <div class="box-layout justify-content-center">
+        <div class="card box-layout__box text-center">
+            <div class="card-header border-bottom-0 pb-0 bg-white">
+                <h1 class="box-layout__title">Kayıt Ol</h1>
+                <p class="box-layout__title">Kayıt olun ve harcamalarınızı kontrol altına alın</p>
+            </div>
+            <div class="card-body pt-0">
+                <form th:object="${user}" th:action="@{/register}" method="post" id="registerForm">
+                    <input type="text" 
+                           placeholder="Adınızı giriniz" 
+                           th:field="*{name}"
+                           class="form-control mb-3"
+                           autofocus="autofocus"/>
+                    <span th:if="${#fields.hasErrors('name')}" 
+                          th:errors="*{name}"></span>
+                    <input type="text" 
+                           placeholder="Mail adresinizi giriniz" 
+                           th:field="*{email}"
+                           class="form-control mb-3"/>
+                    <span th:if="${#fields.hasErrors('email')}" 
+                          th:errors="*{email}"></span>
+                    <input type="password" 
+                           placeholder="Şifrenizi giriniz" 
+                           th:field="*{password}"
+                           class="form-control mb-3"/>
+                    <span th:if="${#fields.hasErrors('password')}" 
+                          th:errors="*{password}"></span>
+                    <input type="password" 
+                           placeholder="Şifrenizi tekrar giriniz"
+                           th:field="*{confirmPassword}"
+                           class="form-control mb-3"/>
+                    <button type="submit" class="btn button_default form-control">Gönder</button>
+                </form>
+            </div>
+            <div class="card-footer bg-white border-top-0">
+                <span class="float-right">
+                    Kayıtlı hesabınız varsa - <a th:href="@{/login}" class="base-color font-weight-bold">Giriş Yap</a>
+                </span>
+            </div>
+        </div>
+    </div>
+     <script th:src="@{/js/jquery.js}"></script>
+     <script th:src="@{/js/jquery-validator.js}"></script>
+     <script th:src="@{/js/register.js}"></script>
+     <script th:src="@{/js/bootstrap.js}"></script>
+</body>
+</html>
